@@ -49,6 +49,14 @@
             font-weight: bold;
             color: #fff;
             border: 2px solid #f85149;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .header-text h1 {
@@ -347,7 +355,9 @@
     <div class="container">
         <header>
             <div class="header-content">
-                <div class="avatar">AY</div>
+                <div class="avatar">
+                    <img src="profile.png" alt="Ankur Yogi" onerror="this.style.display='none'; this.parentElement.innerHTML='AY';">
+                </div>
                 <div class="header-text">
                     <h1>Ankur Yogi</h1>
                     <p class="subtitle">Security Analyst • Threat Hunter • Malware Researcher</p>
