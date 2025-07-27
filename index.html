@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankur Yogi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .company {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .role {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .responsibilities {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.3rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .skill-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .contact {
+            grid-column: 1/-1;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact h2 {
+            color: white;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-img">AY</div>
+            <h1>Ankur Yogi</h1>
+            <p class="subtitle">Cybersecurity Professional</p>
+            <p class="summary">
+                Experienced security analyst with proficiency in threat hunting, incident response, and malware analysis. 
+                Specialized in adversary simulation, APT detection, and leading cybersecurity operations across enterprise environments. 
+                Proven track record in building security infrastructure, managing SOC teams, and defending against advanced persistent threats.
+            </p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="company">NTT DATA</div>
+                    <div class="role">Leading Threat Hunting and Detection Engineer</div>
+                    <div class="responsibilities">
+                        • Conducting advanced adversary simulation and APT hunting campaigns<br>
+                        • Specialized detection of sophisticated threat actors including FIN7 and APT 36<br>
+                        • Expert analysis of stealer malware families (Lumma C2, RedLine)<br>
+                        • Developing and implementing threat detection methodologies<br>
+                        • Building custom detection rules and threat intelligence integration
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="company">Reliance Jio</div>
+                    <div class="role">L3 SOC Analyst & CSIRT Lead</div>
+                    <div class="responsibilities">
+                        • Led Computer Security Incident Response Team at India's largest telecom platform<br>
+                        • Managed security operations for Fortune-86 company infrastructure<br>
+                        • Coordinated incident response for critical telecommunications services<br>
+                        • Developed incident response playbooks and security procedures<br>
+                        • Mentored junior analysts and established security best practices
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="company">Isecurenet Solutions Pvt Ltd</div>
+                    <div class="role">Team Lead SOC</div>
+                    <div class="responsibilities">
+                        • Managed MSSP operations for 5 enterprise clients<br>
+                        • Led a team of 12 SOC analysts across multiple shifts<br>
+                        • Integrated diverse log sources and maintained ELK stack infrastructure<br>
+                        • Built and deployed open-source honeypot solutions<br>
+                        • Established SOC procedures and performance metrics
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Threat Hunting & Analysis</h3>
+                        <ul class="skill-list">
+                            <li>Advanced Persistent Threat (APT) Detection</li>
+                            <li>Behavioral Analysis</li>
+                            <li>Threat Intelligence</li>
+                            <li>MITRE ATT&CK Framework</li>
+                            <li>IOC/IOA Development</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Malware Analysis</h3>
+                        <ul class="skill-list">
+                            <li>Static & Dynamic Analysis</li>
+                            <li>Reverse Engineering</li>
+                            <li>Stealer Malware (Lumma C2, RedLine)</li>
+                            <li>Sandbox Analysis</li>
+                            <li>Signature Development</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Incident Response</h3>
+                        <ul class="skill-list">
+                            <li>CSIRT Leadership</li>
+                            <li>Digital Forensics</li>
+                            <li>Containment Strategies</li>
+                            <li>Post-Incident Analysis</li>
+                            <li>Playbook Development</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Security Tools & Platforms</h3>
+                        <ul class="skill-list">
+                            <li>ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+                            <li>SIEM Platforms</li>
+                            <li>Honeypot Deployment</li>
+                            <li>Log Analysis & Correlation</li>
+                            <li>Security Orchestration</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Leadership & Management</h3>
+                        <ul class="skill-list">
+                            <li>SOC Team Leadership</li>
+                            <li>MSSP Operations</li>
+                            <li>Cross-functional Collaboration</li>
+                            <li>Training & Mentorship</li>
+                            <li>Risk Assessment</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Threat Actors & TTPs</h3>
+                        <ul class="skill-list">
+                            <li>FIN7 Campaign Analysis</li>
+                            <li>APT 36 Detection</li>
+                            <li>Adversary Simulation</li>
+                            <li>Attack Pattern Recognition</li>
+                            <li>Threat Actor Profiling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact section">
+                <h2>Get In Touch</h2>
+                <p>Interested in cybersecurity collaboration or have questions about threat hunting and incident response?</p>
+                <div class="contact-links">
+                    <a href="mailto:ankur.yogi@example.com">Email</a>
+                    <a href="https://linkedin.com/in/ankuryogi" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/ankuryogi" target="_blank">GitHub</a>
+                    <a href="https://twitter.com/ankuryogi" target="_blank">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
