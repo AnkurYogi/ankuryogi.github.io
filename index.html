@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankur Yogi</title>
+    <title>Ankur Yogi - Security Research</title>
     <style>
         * {
             margin: 0;
@@ -12,136 +12,184 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background-color: #0d1117;
+            color: #e6edf3;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-size: 14px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        .header {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+        header {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #f78166, #f85149);
             border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 3rem;
-            color: white;
+            font-size: 2.5rem;
             font-weight: bold;
+            color: #fff;
+            border: 2px solid #f85149;
         }
 
-        h1 {
+        .header-text h1 {
             font-size: 2.5rem;
+            color: #f78166;
             margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 300;
         }
 
         .subtitle {
+            color: #7d8590;
             font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .summary {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            max-width: 700px;
-            margin: 0 auto;
+        .bio {
+            color: #e6edf3;
+            max-width: 600px;
+            line-height: 1.7;
         }
 
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .nav-tabs {
+            display: flex;
             gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #333;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
-        }
-
-        .experience-item {
             margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #30363d;
         }
 
-        .experience-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
+        .tab {
+            background: none;
+            border: none;
+            color: #7d8590;
+            padding: 1rem 0;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        .company {
+        .tab.active {
+            color: #f78166;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #f78166;
+        }
+
+        .tab:hover {
+            color: #e6edf3;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .experience-card:hover {
+            border-color: #f78166;
+        }
+
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .company-name {
+            color: #f78166;
             font-size: 1.3rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .role {
+            color: #58a6ff;
             font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .responsibilities {
-            color: #666;
-            line-height: 1.6;
+        .description {
+            color: #e6edf3;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #21262d;
+            color: #f85149;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #f85149;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .skill-category {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
             padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
         }
 
         .skill-category h3 {
-            color: #333;
+            color: #f78166;
             margin-bottom: 1rem;
             font-size: 1.2rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
         }
 
         .skill-list {
@@ -149,222 +197,431 @@
         }
 
         .skill-list li {
-            padding: 0.3rem 0;
-            color: #555;
+            color: #e6edf3;
+            padding: 0.4rem 0;
             position: relative;
-            padding-left: 1.2rem;
+            padding-left: 1.5rem;
         }
 
         .skill-list li::before {
-            content: "→";
+            content: "▸";
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: #58a6ff;
             font-weight: bold;
         }
 
-        .contact {
-            grid-column: 1/-1;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
+        .threat-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
-        .contact h2 {
-            color: white;
-            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
-            margin-bottom: 1rem;
+        .threat-card {
+            background: #0d1117;
+            border: 1px solid #f85149;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .threat-card h4 {
+            color: #f85149;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .threat-card p {
+            color: #7d8590;
+            font-size: 0.9rem;
+        }
+
+        .contact-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
-        .contact-links a {
-            color: white;
+        .contact-link {
+            color: #58a6ff;
             text-decoration: none;
             padding: 0.8rem 1.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
+            border: 1px solid #58a6ff;
+            border-radius: 6px;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            font-family: inherit;
         }
 
-        .contact-links a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .contact-link:hover {
+            background: #58a6ff;
+            color: #0d1117;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: #7d8590;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #f85149; }
+        .dot-yellow { background: #d29922; }
+        .dot-green { background: #3fb950; }
+
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            overflow-x: auto;
+        }
+
+        .prompt {
+            color: #3fb950;
+        }
+
+        .command {
+            color: #58a6ff;
+        }
+
+        .output {
+            color: #e6edf3;
         }
 
         @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
             .container {
                 padding: 1rem;
             }
 
-            .header {
-                padding: 2rem 1rem;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
             }
 
-            h1 {
-                font-size: 2rem;
+            .nav-tabs {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
 
             .contact-links {
                 flex-direction: column;
                 align-items: center;
             }
+        }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Terminal animation */
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="profile-img">AY</div>
-            <h1>Ankur Yogi</h1>
-            <p class="subtitle">Cybersecurity Professional</p>
-            <p class="summary">
-                Experienced security analyst with proficiency in threat hunting, incident response, and malware analysis. 
-                Specialized in adversary simulation, APT detection, and leading cybersecurity operations across enterprise environments. 
-                Proven track record in building security infrastructure, managing SOC teams, and defending against advanced persistent threats.
-            </p>
-        </div>
+        <header>
+            <div class="header-content">
+                <div class="avatar">AY</div>
+                <div class="header-text">
+                    <h1>Ankur Yogi</h1>
+                    <p class="subtitle">Security Analyst • Threat Hunter • Malware Researcher</p>
+                    <p class="bio">
+                        Specialized in advanced persistent threat detection, malware analysis, and incident response. 
+                        Leading cybersecurity operations across enterprise environments with expertise in adversary simulation 
+                        and threat intelligence. Focused on hunting APT groups and analyzing stealer malware families.
+                    </p>
+                </div>
+            </div>
+        </header>
 
-        <div class="content">
-            <div class="section">
-                <h2>Experience</h2>
-                
-                <div class="experience-item">
-                    <div class="company">NTT DATA</div>
-                    <div class="role">Leading Threat Hunting and Detection Engineer</div>
-                    <div class="responsibilities">
-                        • Conducting advanced adversary simulation and APT hunting campaigns<br>
-                        • Specialized detection of sophisticated threat actors including FIN7 and APT 36<br>
-                        • Expert analysis of stealer malware families (Lumma C2, RedLine)<br>
-                        • Developing and implementing threat detection methodologies<br>
-                        • Building custom detection rules and threat intelligence integration
-                    </div>
+        <nav class="nav-tabs">
+            <button class="tab active" onclick="showTab('experience')">~/experience</button>
+            <button class="tab" onclick="showTab('skills')">~/skills</button>
+            <button class="tab" onclick="showTab('threats')">~/threat-intel</button>
+            <button class="tab" onclick="showTab('contact')">~/contact</button>
+        </nav>
+
+        <main>
+            <div id="experience" class="content-section active">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span>experience.log</span>
                 </div>
 
-                <div class="experience-item">
-                    <div class="company">Reliance Jio</div>
-                    <div class="role">L3 SOC Analyst & CSIRT Lead</div>
-                    <div class="responsibilities">
-                        • Led Computer Security Incident Response Team at India's largest telecom platform<br>
-                        • Managed security operations for Fortune-86 company infrastructure<br>
-                        • Coordinated incident response for critical telecommunications services<br>
-                        • Developed incident response playbooks and security procedures<br>
-                        • Mentored junior analysts and established security best practices
-                    </div>
-                </div>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="company-header">
+                            <div class="company-name">NTT DATA</div>
+                        </div>
+                        <div class="role">Leading Threat Hunting and Detection Engineer</div>
+                        <div class="description">
+                            Conducting advanced adversary simulation and APT hunting campaigns. Specialized in detecting sophisticated 
+                            threat actors and developing custom detection methodologies for enterprise environments.
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">APT Detection</span>
+                            <span class="tech-tag">Adversary Simulation</span>
+                            <span class="tech-tag">Threat Intelligence</span>
+                            <span class="tech-tag">MITRE ATT&CK</span>
+                        </div>
 
-                <div class="experience-item">
-                    <div class="company">Isecurenet Solutions Pvt Ltd</div>
-                    <div class="role">Team Lead SOC</div>
-                    <div class="responsibilities">
-                        • Managed MSSP operations for 5 enterprise clients<br>
-                        • Led a team of 12 SOC analysts across multiple shifts<br>
-                        • Integrated diverse log sources and maintained ELK stack infrastructure<br>
-                        • Built and deployed open-source honeypot solutions<br>
-                        • Established SOC procedures and performance metrics
+                        <div class="code-block">
+                            <div><span class="prompt">user@nttdata:~$</span> <span class="command">hunt_apt --group=FIN7,APT36</span></div>
+                            <div class="output">[+] Detected FIN7 lateral movement patterns</div>
+                            <div class="output">[+] APT36 spear-phishing campaign identified</div>
+                            <div class="output">[+] IOCs extracted and shared with CTI team</div>
+                        </div>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="company-header">
+                            <div class="company-name">Reliance Jio</div>
+                        </div>
+                        <div class="role">L3 SOC Analyst & CSIRT Lead</div>
+                        <div class="description">
+                            Led Computer Security Incident Response Team at India's largest telecom platform (Fortune-86). 
+                            Managed security operations for critical telecommunications infrastructure serving millions of users.
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Incident Response</span>
+                            <span class="tech-tag">CSIRT Leadership</span>
+                            <span class="tech-tag">Telecom Security</span>
+                            <span class="tech-tag">Digital Forensics</span>
+                        </div>
+
+                        <div class="code-block">
+                            <div><span class="prompt">csirt@jio:~$</span> <span class="command">incident_response --severity=critical</span></div>
+                            <div class="output">[!] Security incident detected on telecom infrastructure</div>
+                            <div class="output">[+] CSIRT team activated - response initiated</div>
+                            <div class="output">[+] Threat contained within 2.3 hours</div>
+                        </div>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="company-header">
+                            <div class="company-name">Isecurenet Solutions</div>
+                        </div>
+                        <div class="role">Team Lead SOC</div>
+                        <div class="description">
+                            Managed MSSP operations for 5 enterprise clients. Led a team of 12 SOC analysts, integrated diverse 
+                            log sources, maintained ELK stack infrastructure, and deployed open-source honeypot solutions.
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">SOC Management</span>
+                            <span class="tech-tag">ELK Stack</span>
+                            <span class="tech-tag">Honeypots</span>
+                            <span class="tech-tag">MSSP</span>
+                        </div>
+
+                        <div class="code-block">
+                            <div><span class="prompt">soc@isecurenet:~$</span> <span class="command">deploy_honeypot --type=cowrie</span></div>
+                            <div class="output">[+] Honeypot deployed successfully</div>
+                            <div class="output">[+] Monitoring 5 client environments</div>
+                            <div class="output">[+] Team of 12 analysts operational 24/7</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2>Skills</h2>
+            <div id="skills" class="content-section">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span>skills.json</span>
+                </div>
+
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <h3>Threat Hunting & Analysis</h3>
+                        <h3>Threat Hunting & Detection</h3>
                         <ul class="skill-list">
                             <li>Advanced Persistent Threat (APT) Detection</li>
-                            <li>Behavioral Analysis</li>
-                            <li>Threat Intelligence</li>
-                            <li>MITRE ATT&CK Framework</li>
-                            <li>IOC/IOA Development</li>
+                            <li>Behavioral Analysis & Pattern Recognition</li>
+                            <li>Threat Intelligence Integration</li>
+                            <li>MITRE ATT&CK Framework Implementation</li>
+                            <li>IOC/IOA Development & Sharing</li>
+                            <li>Adversary Simulation & Red Team Exercise</li>
                         </ul>
                     </div>
 
                     <div class="skill-category">
                         <h3>Malware Analysis</h3>
                         <ul class="skill-list">
-                            <li>Static & Dynamic Analysis</li>
-                            <li>Reverse Engineering</li>
+                            <li>Static & Dynamic Malware Analysis</li>
+                            <li>Reverse Engineering Techniques</li>
                             <li>Stealer Malware (Lumma C2, RedLine)</li>
-                            <li>Sandbox Analysis</li>
-                            <li>Signature Development</li>
+                            <li>Sandbox Analysis & Automation</li>
+                            <li>YARA Rule Creation</li>
+                            <li>Memory Forensics & Dump Analysis</li>
                         </ul>
                     </div>
 
                     <div class="skill-category">
                         <h3>Incident Response</h3>
                         <ul class="skill-list">
-                            <li>CSIRT Leadership</li>
-                            <li>Digital Forensics</li>
-                            <li>Containment Strategies</li>
-                            <li>Post-Incident Analysis</li>
-                            <li>Playbook Development</li>
+                            <li>CSIRT Leadership & Coordination</li>
+                            <li>Digital Forensics & Evidence Collection</li>
+                            <li>Containment & Eradication Strategies</li>
+                            <li>Post-Incident Analysis & Reporting</li>
+                            <li>Playbook Development & Documentation</li>
+                            <li>Cross-functional Crisis Management</li>
                         </ul>
                     </div>
 
                     <div class="skill-category">
-                        <h3>Security Tools & Platforms</h3>
+                        <h3>Security Infrastructure</h3>
                         <ul class="skill-list">
                             <li>ELK Stack (Elasticsearch, Logstash, Kibana)</li>
-                            <li>SIEM Platforms</li>
-                            <li>Honeypot Deployment</li>
+                            <li>SIEM Platform Management</li>
                             <li>Log Analysis & Correlation</li>
-                            <li>Security Orchestration</li>
+                            <li>Honeypot Deployment & Management</li>
+                            <li>Security Orchestration & Automation</li>
+                            <li>Network Security Monitoring</li>
                         </ul>
                     </div>
 
                     <div class="skill-category">
-                        <h3>Leadership & Management</h3>
+                        <h3>Leadership & Operations</h3>
                         <ul class="skill-list">
-                            <li>SOC Team Leadership</li>
-                            <li>MSSP Operations</li>
-                            <li>Cross-functional Collaboration</li>
-                            <li>Training & Mentorship</li>
-                            <li>Risk Assessment</li>
+                            <li>SOC Team Leadership (12+ analysts)</li>
+                            <li>MSSP Operations Management</li>
+                            <li>24/7 Security Operations</li>
+                            <li>Training & Skill Development</li>
+                            <li>Process Improvement & KPI Management</li>
+                            <li>Client Relationship Management</li>
                         </ul>
                     </div>
 
                     <div class="skill-category">
-                        <h3>Threat Actors & TTPs</h3>
+                        <h3>Tools & Platforms</h3>
                         <ul class="skill-list">
-                            <li>FIN7 Campaign Analysis</li>
-                            <li>APT 36 Detection</li>
-                            <li>Adversary Simulation</li>
-                            <li>Attack Pattern Recognition</li>
-                            <li>Threat Actor Profiling</li>
+                            <li>Splunk, QRadar, ArcSight</li>
+                            <li>Wireshark, tcpdump, Zeek</li>
+                            <li>Volatility, Rekall, SANS SIFT</li>
+                            <li>Ghidra, IDA Pro, x64dbg</li>
+                            <li>MISP, OpenCTI, ThreatConnect</li>
+                            <li>Python, PowerShell, Bash</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="contact section">
-                <h2>Get In Touch</h2>
-                <p>Interested in cybersecurity collaboration or have questions about threat hunting and incident response?</p>
-                <div class="contact-links">
-                    <a href="mailto:ankur.yogi@example.com">Email</a>
-                    <a href="https://linkedin.com/in/ankuryogi" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/ankuryogi" target="_blank">GitHub</a>
-                    <a href="https://twitter.com/ankuryogi" target="_blank">Twitter</a>
+            <div id="threats" class="content-section">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span>threat_intelligence.db</span>
+                </div>
+
+                <div class="code-block">
+                    <div><span class="prompt">threat_hunter@system:~$</span> <span class="command">query_apt_groups --active</span></div>
+                    <div class="output">Analyzing threat landscape and tracked adversaries...</div>
+                </div>
+
+                <div class="threat-section">
+                    <div class="threat-card">
+                        <h4>FIN7</h4>
+                        <p>Financial threat group tracked for sophisticated spear-phishing campaigns and point-of-sale malware deployment</p>
+                    </div>
+                    <div class="threat-card">
+                        <h4>APT 36</h4>
+                        <p>Pakistan-linked APT group targeting government and defense sectors with custom malware and social engineering</p>
+                    </div>
+                    <div class="threat-card">
+                        <h4>Lumma C2</h4>
+                        <p>Information stealer malware family targeting credentials, cryptocurrency wallets, and browser data</p>
+                    </div>
+                    <div class="threat-card">
+                        <h4>RedLine Stealer</h4>
+                        <p>Commodity malware-as-a-service focused on credential theft and system reconnaissance</p>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <div class="output">[+] IOCs extracted: 847 domains, 1,234 IPs, 556 file hashes</div>
+                    <div class="output">[+] Detection rules updated across all SIEM platforms</div>
+                    <div class="output">[+] Threat intelligence shared with industry partners</div>
+                    <div><span class="prompt">threat_hunter@system:~$</span> <span class="cursor">█</span></div>
                 </div>
             </div>
-        </div>
+
+            <div id="contact" class="content-section">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span>contact.sh</span>
+                </div>
+
+                <div class="contact-section">
+                    <h2 style="color: #f78166; margin-bottom: 1rem;">Get In Touch</h2>
+                    <p style="color: #7d8590; margin-bottom: 2rem;">
+                        Interested in cybersecurity research, threat hunting methodologies, or collaborative security projects? 
+                        Let's connect and share knowledge about the evolving threat landscape.
+                    </p>
+
+                    <div class="code-block">
+                        <div><span class="prompt">visitor@system:~$</span> <span class="command">./connect_with_ankur.sh</span></div>
+                        <div class="output">Establishing secure communication channels...</div>
+                        <div class="output">[+] Multiple contact methods available</div>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="mailto:ankur.yogi@example.com" class="contact-link">📧 Email</a>
+                        <a href="https://linkedin.com/in/ankuryogi" class="contact-link" target="_blank">💼 LinkedIn</a>
+                        <a href="https://github.com/ankuryogi" class="contact-link" target="_blank">🐙 GitHub</a>
+                        <a href="https://twitter.com/ankuryogi" class="contact-link" target="_blank">🐦 Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all content sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected content section
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
